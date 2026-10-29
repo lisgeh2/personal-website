@@ -42,10 +42,20 @@ your bad dreams." The kid believes it, and sleeps.
 A symbol (a special object) gives the child a new thing to believe about the world, and
 that belief leads to real, positive change. But only if they actually believe it.
 
+<figure>
+  <img src="../../static/img/blog/placebo-dreamcatcher.jpg" alt="Slide: a dream catcher (symbol, a special object) leads to a child thinking 'this dream catcher catches my bad dreams!', which leads to sleep. The belief, only if they actually believe it, leads to real, positive change." loading="lazy">
+  <figcaption>Is this a placebo effect?</figcaption>
+</figure>
+
 Now psychotherapy. A symbol again, this time a special conversation with a special
 person. The therapist offers the patient a new, better thing to believe: *"I have a
 distorted way of thinking because of my condition. I am not actually worthless."* And if
 the patient actually believes it, real, positive change follows.
+
+<figure>
+  <img src="../../static/img/blog/placebo-psychotherapy.jpg" alt="Slide: a therapy session (symbol, a special conversation with a special person) gives a sad patient a new belief, 'I have a distorted way of thinking because of my condition. I am not actually worthless', which leads to a happy person. The belief, only if they actually believe it, leads to real, positive change." loading="lazy">
+  <figcaption>And is this one?</figcaption>
+</figure>
 
 Same structure. It's no secret either: clients who believe therapy will help them tend to
 do better. Hermeneutics would add that meaning always comes from a person's own
