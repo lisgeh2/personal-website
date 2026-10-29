@@ -37,7 +37,7 @@ content/              # ← everything you edit lives here
   blog/               #   one Markdown file per post
     _TEMPLATE.md      #   copy this to start a new post
 templates/            # Jinja2 HTML layouts (base.html is shared by every page)
-  macros.html         #   small reusable components (icons, tags, post list item)
+  macros.html         #   small reusable components (icons, links, list rows, page header)
 static/
   css/style.css       # all styles; colours are CSS variables at the top
   js/background.js    # Vanta.js background (home page only)
