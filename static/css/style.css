@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Personal website styles
+   1. Theme tokens   2. Base   3. Layout & nav   4. Components
+   5. Pages          6. Print
+   ========================================================================== */
+
+/* 1. Theme tokens ---------------------------------------------------------- */
+:root {
+  --bg: #0b0d17;
+  --surface: #141829;
+  --surface-hover: #1b2036;
+  --border: #262c47;
+  --text: #e7e9f3;
+  --muted: #9aa0bd;
+  --accent: #7cc4ff;
+  --accent-2: #c49bff;
+  --hero-bg: #0b0d17;     /* Vanta background colour (hero is dark in both themes) */
+  --hero-accent: #7cc4ff; /* Vanta net line colour */
+
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius: 14px;
+  --width: 64rem;
+  --space: clamp(1rem, 3vw, 2rem);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7f7fb;
+    --surface: #ffffff;
+    --surface-hover: #f0f1f8;
+    --border: #e1e3ee;
+    --text: #1a1c2b;
+    --muted: #5d627a;
+    --accent: #2563eb;
+    --accent-2: #7c3aed;
+  }
+}
+
+/* 2. Base ------------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 1.0625rem/1.7 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+main { flex: 1; }
+
+h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.5em; }
+h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+h2 { font-size: 1.5rem; margin-top: 2.5rem; }
+h3 { font-size: 1.1rem; }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent-2); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+code, pre { font-family: var(--mono); font-size: 0.9em; }
+pre { background: var(--surface); padding: 1rem; border-radius: var(--radius); overflow-x: auto; }
+
+.muted { color: var(--muted); }
+.lead { font-size: 1.2rem; color: var(--muted); max-width: 42rem; }
+
+.icon { width: 1.1em; height: 1.1em; vertical-align: -0.15em; flex-shrink: 0; }
+.icon-arrow { width: 0.85em; height: 0.85em; opacity: 0.7; }
+
+.skip-link { position: absolute; left: -999px; }
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--surface); padding: 0.5rem 1rem; }
+
+/* 3. Layout & navigation --------------------------------------------------- */
+.container { width: min(100% - 2 * var(--space), var(--width)); margin-inline: auto; }
+.content { padding-block: 3rem 5rem; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+/* On the home page the header floats over the (always dark) hero. */
+.page-home .site-header {
+  position: absolute; inset: 0 0 auto; background: transparent; border-color: transparent;
+  backdrop-filter: none;
+  --bg: #0b0d17; --text: #e7e9f3; --muted: #b6bbd6; --border: #262c47;
+  --surface-hover: rgba(255, 255, 255, 0.08);
+}
+
+.nav { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+.nav-brand { font-weight: 700; color: var(--text); text-decoration: none; }
+.nav-links { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+.nav-links a {
+  display: block; padding: 0.4rem 0.8rem; border-radius: 999px;
+  color: var(--muted); text-decoration: none; font-size: 0.95rem;
+}
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); background: var(--surface-hover); }
+
+/* Mobile menu: pure CSS checkbox toggle, no JavaScript needed. */
+.nav-toggle, .nav-burger { display: none; }
+
+@media (max-width: 40rem) {
+  .nav-burger { display: block; cursor: pointer; padding: 1rem 0.25rem; }
+  .nav-burger span, .nav-burger span::before, .nav-burger span::after {
+    display: block; width: 22px; height: 2px; background: var(--text); position: relative; content: "";
+  }
+  .nav-burger span::before { position: absolute; top: -7px; }
+  .nav-burger span::after { position: absolute; top: 7px; }
+  .nav-links {
+    display: none; position: absolute; top: 4rem; left: 0; right: 0;
+    flex-direction: column; padding: 0.5rem var(--space) 1rem;
+    background: var(--bg); border-bottom: 1px solid var(--border);
+  }
+  .nav-toggle:checked ~ .nav-links { display: flex; }
+}
+
+.site-footer { border-top: 1px solid var(--border); padding-block: 1.5rem; color: var(--muted); font-size: 0.9rem; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+
+/* 4. Components ------------------------------------------------------------ */
+.social { display: flex; gap: 0.75rem; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
+.social a { color: var(--muted); display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.social a:hover { color: var(--text); }
+.social-large a {
+  padding: 0.6rem 1.1rem; border: 1px solid var(--border); border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent); color: var(--text);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.social-large a:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+.button {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.1rem; border-radius: 999px; border: 1px solid var(--accent);
+  background: var(--accent); color: var(--bg); font: 500 0.95rem var(--font);
+  text-decoration: none; cursor: pointer;
+}
+.button:hover { color: var(--bg); filter: brightness(1.1); }
+.button-ghost { background: transparent; color: var(--accent); }
+.button-ghost:hover { color: var(--accent); background: var(--surface-hover); }
+.actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.card {
+  position: relative; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.4rem;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.card:hover { border-color: var(--accent); background: var(--surface-hover); transform: translateY(-3px); }
+.card-link { color: var(--text); text-decoration: none; }
+.card-link h3 { margin: 0; }
+/* Makes the whole card clickable while keeping a single, accessible link. */
+.stretched { color: var(--text); text-decoration: none; }
+.stretched::after { content: ""; position: absolute; inset: 0; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0.75rem 0 0; }
+.tags li {
+  font: 0.75rem var(--mono); padding: 0.15rem 0.55rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent);
+}
+
+.page-header { margin-bottom: 2rem; }
+.page-header .actions, .page-header .button { margin-top: 1rem; }
+
+/* 5. Pages ----------------------------------------------------------------- */
+
+/* Home hero */
+.hero {
+  position: relative; min-height: 100vh; display: grid; place-items: center;
+  background: radial-gradient(ellipse at 30% 20%, #1d2550 0%, var(--hero-bg) 60%);
+  color: #e7e9f3; overflow: hidden;
+}
+.hero.has-vanta { background: var(--hero-bg); }
+.hero-inner { position: relative; z-index: 1; text-align: center; padding-block: 6rem; }
+.hero-inner .social { justify-content: center; margin-top: 2rem; }
+.hero-inner .social-large a { color: #e7e9f3; border-color: #2f3760; background: rgba(20, 24, 41, 0.6); }
+.hero-kicker { font-family: var(--mono); color: #7cc4ff; margin: 0; }
+.hero-title { font-size: clamp(3rem, 10vw, 6rem); margin: 0.1em 0; }
+.hero-tagline { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: #b6bbd6; margin: 0 auto; max-width: 36rem; }
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 1;
+  color: #b6bbd6; text-decoration: none; font-size: 1.5rem; animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob { 50% { transform: translate(-50%, 6px); } }
+@media (prefers-reduced-motion: reduce) { .hero-scroll { animation: none; } html { scroll-behavior: auto; } }
+
+.about h2 { margin-top: 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1rem; margin-top: 2rem; }
+
+/* Blog */
+.jump-links { display: flex; gap: 1rem; font-family: var(--mono); font-size: 0.9rem; }
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-item {
+  display: grid; grid-template-columns: 8rem 1fr; gap: 1rem;
+  padding-block: 1rem; border-bottom: 1px solid var(--border);
+}
+.post-item time { font: 0.85rem/2 var(--mono); color: var(--muted); }
+.post-title { font-weight: 500; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+.post-title:hover { color: var(--accent); }
+.post-meta, .post-summary { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.95rem; }
+.post-kind { font-family: var(--mono); color: var(--accent); margin: 0 0 0.5rem; }
+@media (max-width: 40rem) { .post-item { grid-template-columns: 1fr; gap: 0; } }
+
+.prose { max-width: 42rem; }
+.prose h2 { font-size: 1.35rem; }
+.prose blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--muted); }
+.prose img { max-width: 100%; border-radius: var(--radius); }
+.back { margin-top: 3rem; }
+
+/* CV */
+.cv-section h2 { padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+.timeline { list-style: none; padding: 0; margin: 0; }
+.timeline-item { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding-block: 0.9rem; }
+.timeline-item h3 { margin: 0; }
+.timeline-item p { margin: 0.1rem 0 0; }
+.timeline-item ul { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+.timeline-when { font: 0.85rem/1.9 var(--mono); color: var(--muted); }
+.skills { display: grid; grid-template-columns: 9rem 1fr; gap: 0.5rem 1rem; align-items: center; }
+.skills dt { font-weight: 500; }
+.skills dd { margin: 0; }
+.skills .tags { margin: 0; }
+@media (max-width: 40rem) {
+  .timeline-item, .skills { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
+/* Projects */
+.project-grid {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1.25rem;
+}
+.project h2 { font-size: 1.15rem; margin: 0 0 0.25rem; }
+.project p { margin: 0.4rem 0 0; }
+
+/* 6. Print (mainly for the CV page) ---------------------------------------- */
+@media print {
+  :root { --bg: #fff; --surface: #fff; --text: #000; --muted: #444; --border: #ccc; --accent: #000; }
+  .site-header, .site-footer, .actions, .skip-link { display: none; }
+  .content { padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  .cv-section { break-inside: avoid; }
+}

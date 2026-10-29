@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ heading }} · {{ site.title }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <h1>{{ heading }}</h1>
+  {% if intro %}<p class="lead">{{ intro }}</p>{% endif %}
+</header>
+
+<ul class="project-grid">
+  {% for p in projects %}
+  <li class="card project">
+    <h2><a class="stretched" href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }} {{ ui.icon("arrow") }}</a></h2>
+    {% if p.year %}<p class="muted">{{ p.year }}</p>{% endif %}
+    <p>{{ p.description }}</p>
+    {{ ui.tags(p.tags) }}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

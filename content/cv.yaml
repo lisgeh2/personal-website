@@ -1,0 +1,39 @@
+# Your CV. Every section is optional — delete what you don't need.
+# Put a PDF version at static/files/cv.pdf and set `pdf` to show a download button.
+pdf: static/files/cv.pdf
+
+summary: >
+  One or two sentences about who you are and what you're working towards.
+
+sections:
+  - title: Education
+    entries:
+      - what: MSc in Something Interesting
+        where: University Name
+        when: 2024 – present
+        details:
+          - Thesis on a fascinating topic.
+      - what: BSc in Something Foundational
+        where: University Name
+        when: 2021 – 2024
+
+  - title: Experience
+    entries:
+      - what: Research Assistant
+        where: Lab or Company
+        when: 2023 – 2024
+        details:
+          - Built a thing that did a useful job.
+          - Analysed data with Python and R.
+
+  - title: Publications & Talks
+    entries:
+      - what: "Title of a paper or talk"
+        where: Conference / Journal
+        when: "2025"
+        link: https://example.com
+
+skills:
+  - { group: Languages,   items: [Python, R, HTML/CSS, JavaScript] }
+  - { group: Tools,       items: [Git, Jupyter, LaTeX] }
+  - { group: Spoken,      items: [German, English] }

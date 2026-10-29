@@ -1,0 +1,13 @@
+heading: Creative Projects
+intro: Things I've made away from the keyboard (mostly).
+
+projects:
+  - title: Ceramic Doves
+    description: Hand-formed ceramic doves — a small series exploring shape and glaze.
+    url: https://github.com/lisgeh2/ceramicdoves
+    tags: [ceramics]
+
+  - title: Your Next Project
+    description: Replace this with a short explanation of something you made.
+    url: https://example.com
+    tags: [placeholder]

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}CV · {{ site.title }}{% endblock %}
+
+{% block content %}
+<header class="page-header">
+  <h1>Curriculum Vitae</h1>
+  {% if cv.summary %}<p class="lead">{{ cv.summary }}</p>{% endif %}
+  <div class="actions">
+    {% if cv.pdf %}<a class="button" href="{{ url(cv.pdf) }}" download>Download PDF</a>{% endif %}
+    <button class="button button-ghost" type="button" onclick="window.print()">Print</button>
+  </div>
+</header>
+
+{% for section in cv.sections %}
+<section class="cv-section">
+  <h2>{{ section.title }}</h2>
+  <ol class="timeline">
+    {% for e in section.entries %}
+    <li class="timeline-item">
+      <span class="timeline-when">{{ e.when }}</span>
+      <div>
+        <h3>{% if e.link %}<a href="{{ e.link }}" target="_blank" rel="noopener">{{ e.what }}</a>{% else %}{{ e.what }}{% endif %}</h3>
+        {% if e.where %}<p class="muted">{{ e.where }}</p>{% endif %}
+        {% if e.details %}<ul>{% for d in e.details %}<li>{{ d }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endfor %}
+
+{% if cv.skills %}
+<section class="cv-section">
+  <h2>Skills</h2>
+  <dl class="skills">
+    {% for s in cv.skills %}
+    <dt>{{ s.group }}</dt><dd>{{ ui.tags(s["items"]) }}</dd>
+    {% endfor %}
+  </dl>
+</section>
+{% endif %}
+{% endblock %}

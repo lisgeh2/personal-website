@@ -1,0 +1,24 @@
+# Global site settings — edit these first.
+name: Lisa Gehrig
+title: Lisa Gehrig
+tagline: Curious about minds, models and making things.
+description: Personal website of Lisa Gehrig — blog, CV, coding and creative projects.
+email: you@example.com          # shown on the home page; remove to hide
+
+links:
+  github: https://github.com/lisgeh2
+  linkedin: https://www.linkedin.com/in/your-handle/   # TODO: replace with your profile URL
+
+# Short paragraph shown on the home page under the hero.
+about: >
+  Hi! I'm Lisa. This is my corner of the internet, where I collect thoughts,
+  papers I find interesting, things I've built in code, and things I've made
+  by hand. Have a look around.
+
+# Navigation bar. `page` must match the id passed to each template in build.py.
+nav:
+  - { page: home,     label: Home,     path: / }
+  - { page: blog,     label: Blog,     path: /blog/ }
+  - { page: cv,       label: CV,       path: /cv/ }
+  - { page: coding,   label: Coding,   path: /coding/ }
+  - { page: creative, label: Creative, path: /creative/ }

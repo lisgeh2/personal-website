@@ -1,0 +1,52 @@
+{% import "macros.html" as ui %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ site.title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="{{ url('/static/favicon.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url('/static/css/style.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body class="page-{{ page }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main">
+      <a class="nav-brand" href="{{ url('/') }}">{{ site.name }}</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">
+      <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span></label>
+      <ul class="nav-links">
+        {% for item in site.nav %}
+        <li><a href="{{ url(item.path) }}"{% if item.page == page %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    {% block main %}
+    <div class="container content">
+      {% block content %}{% endblock %}
+    </div>
+    {% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; {{ year }} {{ site.name }}</span>
+      {{ ui.social_links(site.links) }}
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

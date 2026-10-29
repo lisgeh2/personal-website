@@ -1,0 +1,25 @@
+heading: Coding Projects
+intro: Things I've built — a short explanation each, and a link to try or read the code.
+
+# Each project: title, description, url (required); repo, year, tags (optional).
+projects:
+  - title: Computational Modeling
+    description: Models of cognition and behaviour, implemented and fitted in Python.
+    url: https://github.com/lisgeh2/computational_modeling
+    year: 2025
+    tags: [Python, modeling]
+
+  - title: How Neurospicy Are You?
+    description: A playful online questionnaire that scores and explains your answers.
+    url: https://github.com/lisgeh2/how-neurospicy-are-you
+    tags: [web, questionnaire]
+
+  - title: SBB Display
+    description: A live departure board for Swiss trains, styled after the real station displays.
+    url: https://github.com/lisgeh2/sbb-display
+    tags: [API, display]
+
+  - title: Questionnaire Template
+    description: A reusable template for building and deploying online questionnaires.
+    url: https://github.com/lisgeh2/questionnaire_template
+    tags: [template, web]
