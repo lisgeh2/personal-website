@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import functools
+import hashlib
 import http.server
 import shutil
 from dataclasses import dataclass
@@ -106,12 +107,17 @@ class SiteBuilder:
             trim_blocks=True,
             lstrip_blocks=True,
         )
-        self.env.globals.update(site=self.site, url=self.url, year=dt.date.today().year)
+        self.env.globals.update(site=self.site, url=self.url, asset=self.asset, year=dt.date.today().year)
         self.env.filters["date"] = lambda d, fmt="%B %-d, %Y": d.strftime(fmt)
 
     def url(self, path: str) -> str:
         """Prefix an absolute site path with the deployment base path."""
         return f"{self.base_path}/{path.lstrip('/')}"
+
+    def asset(self, path: str) -> str:
+        """URL for a static file with a content hash, so browsers never use a stale copy."""
+        digest = hashlib.sha1((ROOT / path.lstrip("/")).read_bytes()).hexdigest()[:8]
+        return f"{self.url(path)}?v={digest}"
 
     def render(self, template: str, out_path: str, **context) -> None:
         target = self.output_dir / out_path

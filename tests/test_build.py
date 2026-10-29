@@ -52,7 +52,7 @@ class BuildTest(unittest.TestCase):
     def test_base_path_prefixes_links(self):
         build.SiteBuilder(self.out, base_path="/my-site").build()
         html = (self.out / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="/my-site/static/css/style.css"', html)
+        self.assertRegex(html, r'href="/my-site/static/css/style\.css\?v=[0-9a-f]{8}"')
         self.assertIn('href="/my-site/blog/"', html)
 
 
