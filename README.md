@@ -41,7 +41,7 @@ templates/            # Jinja2 HTML layouts (base.html is shared by every page)
 static/
   css/style.css       # all styles; colours are CSS variables at the top
   js/background.js    # Vanta.js background (home page only)
-  files/              # drop cv.pdf here to enable the "Download PDF" button
+  files/              # downloadable files (cv.pdf shows a "Download PDF" link on the CV page)
 tests/                # smoke tests: python -m unittest discover -s tests
 ```
 
