@@ -14,6 +14,8 @@ It's plain HTML and CSS. The only JavaScript is the animated
 
 ## Quick start
 
+
+
 ```bash
 pip install -r requirements.txt
 python build.py --serve      # http://127.0.0.1:8000
