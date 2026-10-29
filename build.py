@@ -53,6 +53,7 @@ class Post:
     authors: str = ""
     venue: str = ""
     paper_url: str = ""
+    pdf: str = ""  # optional downloadable version, path relative to the site root
 
     @property
     def has_page(self) -> bool:
@@ -82,7 +83,7 @@ def load_post(path: Path) -> Post:
         raise ValueError(f"{path.name}: front matter needs a 'date'")
     if "title" not in meta:
         raise ValueError(f"{path.name}: front matter needs a 'title'")
-    html = markdown.markdown(body, extensions=["fenced_code", "tables", "footnotes"])
+    html = markdown.markdown(body, extensions=["fenced_code", "tables", "footnotes", "md_in_html"])
     return Post(slug=path.stem, date=date, html=html, **meta)
 
 

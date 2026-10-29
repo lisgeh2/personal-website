@@ -3,14 +3,17 @@
 {% block description %}{{ post.summary or site.description }}{% endblock %}
 
 {% block hero %}
-{% call ui.page_hero("// " ~ ("paper note" if post.kind == "paper" else "thought"), post.title, post.summary) %}
+{% call ui.page_hero("// " ~ ("paper note" if post.kind == "paper" else "thought"), post.title, post.summary, narrow=True) %}
 <p class="hero-meta">
   <time datetime="{{ post.date }}">{{ post.date|date }}</time>
   {% if post.authors %} · {{ post.authors }}{% endif %}
   {% if post.venue %} · {{ post.venue }}{% endif %}
 </p>
-{% if post.paper_url %}
-<a class="button" href="{{ post.paper_url }}" target="_blank" rel="noopener">Read the paper {{ ui.icon("arrow") }}</a>
+{% if post.paper_url or post.pdf %}
+<div class="actions">
+  {% if post.paper_url %}<a class="button" href="{{ post.paper_url }}" target="_blank" rel="noopener">Read the paper {{ ui.icon("arrow") }}</a>{% endif %}
+  {% if post.pdf %}<a class="button button-ghost" href="{{ url(post.pdf) }}" download>Download PDF</a>{% endif %}
+</div>
 {% endif %}
 {% endcall %}
 {% endblock %}

@@ -43,8 +43,8 @@
 </li>
 {% endmacro %}
 
-{% macro page_hero(kicker, title, lead="") %}
-<section id="hero" class="hero hero-compact">
+{% macro page_hero(kicker, title, lead="", narrow=False) %}
+<section id="hero" class="hero hero-compact{% if narrow %} hero-narrow{% endif %}">
   <div class="container hero-inner">
     <p class="hero-kicker">{{ kicker }}</p>
     <h1 class="hero-title">{{ title }}</h1>
