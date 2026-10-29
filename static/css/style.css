@@ -133,8 +133,8 @@ pre { background: var(--surface-solid); border: 1px solid var(--border); padding
 .hero-tagline { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: #b6bbd6; margin: 0 auto; max-width: 38rem; }
 .hero-meta { font: 0.9rem var(--mono); color: var(--muted); margin: 1rem 0 0; }
 
-.hero-compact { min-height: clamp(22rem, 52vh, 30rem); }
-.hero-compact .hero-inner { padding-block: 6rem 4rem; }
+.hero-compact { min-height: clamp(18rem, 40vh, 24rem); }
+.hero-compact .hero-inner { padding-block: 6rem 2.5rem; }
 .hero-compact .hero-title { font-size: clamp(2.4rem, 7vw, 4.2rem); }
 
 .hero-scroll {
