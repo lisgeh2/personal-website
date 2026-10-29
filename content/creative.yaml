@@ -1,13 +1,29 @@
 heading: Creative Projects
-intro: Things I've made away from the keyboard (mostly).
+intro: Music, theatre, improv and festivals, plus the websites I built for some of them.
 
 projects:
   - title: Ceramic Doves
-    description: Hand-formed ceramic doves — a small series exploring shape and glaze.
-    url: https://github.com/lisgeh2/ceramicdoves
-    tags: [ceramics]
+    description: I play keys in the band Ceramic Doves, with regular gigs. I also built the band's website.
+    url: https://lisgeh2.github.io/ceramicdoves/
+    tags: [music, keyboard]
 
-  - title: Your Next Project
-    description: Replace this with a short explanation of something you made.
-    url: https://example.com
-    tags: [placeholder]
+  - title: Studierendentheater Zürich
+    description: >
+      I'm president of the student theatre StuThe: I lead the board, help organise
+      productions, and act on stage.
+    url: https://lisgeh2.github.io/stuthe-website/
+    tags: [theatre, acting]
+
+  - title: Studi-Impro
+    description: >
+      A non-profit improv group I founded in 2025 and lead. I also programmed its website.
+    url: https://www.studi-impro.ch
+    year: 2025
+    tags: [improv, community]
+
+  - title: SchwamenAir
+    description: >
+      A non-profit local music festival. I organised the 2026 edition and handled tech, artist
+      communication and promotion.
+    year: 2026
+    tags: [festival, organising]

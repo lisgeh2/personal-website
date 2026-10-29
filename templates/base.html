@@ -33,6 +33,7 @@
   </header>
 
   <main id="main">
+    {% block hero %}{% endblock %}
     {% block main %}
     <div class="container content">
       {% block content %}{% endblock %}
@@ -47,6 +48,9 @@
     </div>
   </footer>
 
-  {% block scripts %}{% endblock %}
+  {# Vanta.js NET background for the hero banner — the only JavaScript on the site. #}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js" defer></script>
+  <script src="{{ url('/static/js/background.js') }}" defer></script>
 </body>
 </html>

@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Not found · {{ site.title }}{% endblock %}
 
-{% block content %}
-<header class="page-header">
-  <h1>404</h1>
-  <p class="lead">This page wandered off. <a href="{{ url('/') }}">Go home</a>.</p>
-</header>
+{% block hero %}
+{% call ui.page_hero("// error 404", "Lost in the network", "This page wandered off.") %}
+<a class="button" href="{{ url('/') }}">Go home</a>
+{% endcall %}
 {% endblock %}

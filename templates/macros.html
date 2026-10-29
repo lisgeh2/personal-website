@@ -42,3 +42,14 @@
   </div>
 </li>
 {% endmacro %}
+
+{% macro page_hero(kicker, title, lead="") %}
+<section id="hero" class="hero hero-compact">
+  <div class="container hero-inner">
+    <p class="hero-kicker">{{ kicker }}</p>
+    <h1 class="hero-title">{{ title }}</h1>
+    {% if lead %}<p class="hero-tagline">{{ lead }}</p>{% endif %}
+    {{ caller() if caller is defined }}
+  </div>
+</section>
+{% endmacro %}

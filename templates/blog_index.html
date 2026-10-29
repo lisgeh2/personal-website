@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block title %}Blog · {{ site.title }}{% endblock %}
 
-{% block content %}
-<header class="page-header">
-  <h1>Blog</h1>
-  <p class="lead">Interesting thoughts I've had, and papers worth reading.</p>
-  <nav class="jump-links"><a href="#thoughts">Thoughts</a> <a href="#papers">Papers</a></nav>
-</header>
+{% block hero %}
+{% call ui.page_hero("// blog", "Thoughts & Papers", "Interesting thoughts I've had, and papers worth reading.") %}
+<nav class="pill-links"><a href="#thoughts">Thoughts</a><a href="#papers">Papers</a></nav>
+{% endcall %}
+{% endblock %}
 
+{% block content %}
 <section id="thoughts">
+  <p class="kicker">// thoughts</p>
   <h2>Thoughts</h2>
   {% if thoughts %}
   <ul class="post-list">{% for post in thoughts %}{{ ui.post_item(post) }}{% endfor %}</ul>
@@ -16,6 +17,7 @@
 </section>
 
 <section id="papers">
+  <p class="kicker">// papers</p>
   <h2>Papers</h2>
   {% if papers %}
   <ul class="post-list">{% for post in papers %}{{ ui.post_item(post) }}{% endfor %}</ul>

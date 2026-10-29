@@ -1,9 +1,9 @@
 # Global site settings — edit these first.
 name: Lisa Gehrig
 title: Lisa Gehrig
-tagline: Curious about minds, models and making things.
+tagline: Psychology student, data analyst and maker of things, from survey pipelines to stage shows.
 description: Personal website of Lisa Gehrig — blog, CV, coding and creative projects.
-email: you@example.com          # shown on the home page; remove to hide
+
 
 links:
   github: https://github.com/lisgeh2
@@ -11,9 +11,11 @@ links:
 
 # Short paragraph shown on the home page under the hero.
 about: >
-  Hi! I'm Lisa. This is my corner of the internet, where I collect thoughts,
-  papers I find interesting, things I've built in code, and things I've made
-  by hand. Have a look around.
+  Hi! I'm Lisa, a psychology master's student at the University of Zurich and a
+  data analyst at gfs-zürich. I like building tools that make research easier, and
+  away from the keyboard I play keys in a band, act in the student theatre and do
+  improv. This is where I collect my thoughts, papers I find interesting, and the
+  things I've made.
 
 # Navigation bar. `page` must match the id passed to each template in build.py.
 nav:

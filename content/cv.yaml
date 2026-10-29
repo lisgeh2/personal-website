@@ -1,39 +1,120 @@
 # Your CV. Every section is optional — delete what you don't need.
-# Put a PDF version at static/files/cv.pdf and set `pdf` to show a download button.
+# Put a PDF version at static/files/cv.pdf to show a "Download PDF" button.
 pdf: static/files/cv.pdf
 
+headline: Psychology master's student · Data analyst & project associate
+
 summary: >
-  One or two sentences about who you are and what you're working towards.
+  I study psychology at the University of Zurich with a minor in computer science,
+  and I work as a data analyst at gfs-zürich. I like building tools that make
+  research easier, from survey pipelines to questionnaires and dashboards.
 
 sections:
   - title: Education
     entries:
-      - what: MSc in Something Interesting
-        where: University Name
-        when: 2024 – present
+      - what: MSc Psychology (Mono 120)
+        where: University of Zurich
+        when: 2026 – present
+      - what: BSc Psychology (Major 120) & Computer Science (Minor 60)
+        where: University of Zurich
+        when: 2022 – 2026
         details:
-          - Thesis on a fascinating topic.
-      - what: BSc in Something Foundational
-        where: University Name
-        when: 2021 – 2024
+          - "Grade average 5.4 / 6 (major only: 5.6)."
+          - Nominated for the Swiss Study Foundation for outstanding results in the assessment exams.
+      - what: Matura
+        where: Kantonsschule Uster
+        when: 2015 – 2021
+        details:
+          - "Grade average 5.3 / 6."
 
   - title: Experience
     entries:
-      - what: Research Assistant
-        where: Lab or Company
-        when: 2023 – 2024
+      - what: Data Analyst & Project Associate
+        where: gfs-zürich
+        when: Aug 2025 – present
+        text: "Data analysis, programming, project management and visualisation. For example:"
         details:
-          - Built a thing that did a useful job.
-          - Analysed data with Python and R.
+          - Analysed and migrated a years-old SPSS analysis of a repeated study (ten script files) to Python.
+          - Built a reusable Python helper module for recurring tasks in the analysis pipeline.
+          - Programmed questionnaires with randomised vignette designs and quotas.
+          - Coordinated with the fieldwork team, monitored incoming data, and supervised student assistants.
+          - Coded open-ended answers with Caplena and created matching code lists.
+          - Ran projects for SUISA, Pro Natura, ERZ and ZHAW in teams of two, including direct client contact on technical questions.
+      - what: Earlier work
+        when: 2021 – 2022
+        details:
+          - Childcare assistant, KiTa Chinderkram (2022)
+          - Care internship in a retirement home, Stiftung Lichthof (2021)
+          - Fundraiser for WWF, Wesser und Partner (2021)
 
-  - title: Publications & Talks
+  - title: Research Projects
     entries:
-      - what: "Title of a paper or talk"
-        where: Conference / Journal
-        when: "2025"
-        link: https://example.com
+      - what: Music & Emotions
+        when: Independent
+        text: >
+          Self-designed pilot study (n ≈ 7) on individual emotional responses to music,
+          using three-dimensional ratings from the literature plus open association questions.
+      - what: Caffeine & Well-being
+        when: Independent
+        text: >
+          Self-tracking study with daily measurements, repeated during exam season to explore
+          how stress and changes in consumption might play a role.
+
+  - title: Software Projects
+    entries:
+      - what: Questionnaire Template
+        when: Python · Streamlit
+        link: https://github.com/lisgeh2/questionnaire_template
+        text: >
+          A reusable survey and dashboard project. Multi-page questionnaires are defined
+          declaratively; validation, scoring, a personalised results page and an analysis
+          dashboard (with a pytest suite) are built in. Data is stored as .jsonl, .sav or
+          gfs-internal formats.
+      - what: Questionnaire Demonstrator
+        when: Python · Streamlit
+        link: https://github.com/lisgeh2/how-neurospicy-are-you
+        text: >
+          A questionnaire built on the template: 36 Likert items on ADHD and autism traits,
+          reverse coding, scale scores, z-scores and percentiles.
+      - what: Lend-a-Hand
+        when: Software Praktikum UZH, spring 2026
+        text: >
+          Web platform connecting people who need help with volunteers, built in a team of four.
+          Java/Spring Boot, Next.js/TypeScript, CI with GitHub Actions, deployed on Google Cloud.
+
+  - title: Academic Interests
+    entries:
+      - what: Summer schools & conferences
+        when: "2026"
+        text: Psychedelic Science Summer School 2026 (Vaumarcus) and the ALPS Conference 2026 (Aargau).
+      - what: «Baby Congresses»
+        when: Every two months
+        text: Giving and listening to short scientific talks with and for friends.
+
+  - title: Volunteering
+    entries:
+      - what: President, Studierendentheater Zürich (StuThe)
+        link: https://lisgeh2.github.io/stuthe-website/
+        text: >
+          Leading, organising and acting in the student theatre. Responsible for the board,
+          chairing board meetings and the general assembly, and addressing and resolving
+          social conflicts in the ensemble.
+      - what: Founder & lead, non-profit improv group
+        when: 2025 – present
+        link: https://www.studi-impro.ch
+        text: Leading and organising the group, and programming its website.
+      - what: Organiser, SchwamenAir 2026
+        when: "2026"
+        text: Non-profit local music festival. Responsible for tech, artist communication and promotion.
+
+  - title: Hobbies
+    entries:
+      - what: Music
+        text: Keyboardist in the band «Ceramic Doves», with regular gigs.
+      - what: Competitive floorball (until 2022)
+        text: Swiss champion U21A 2019; played at the U19 World Championship in Uppsala.
 
 skills:
-  - { group: Languages,   items: [Python, R, HTML/CSS, JavaScript] }
-  - { group: Tools,       items: [Git, Jupyter, LaTeX] }
-  - { group: Spoken,      items: [German, English] }
+  - { group: Programming, items: [Python, pandas, Streamlit, Flask, Plotly, pytest, R, ggplot2, SPSS, Java, JavaScript, HTML/CSS, C (basics)] }
+  - { group: Tools,       items: [Git, GitHub Actions, Website hosting, "APIs (Notion, Anthropic)"] }
+  - { group: Languages,   items: [German (native), English (fluent), French (basic)] }

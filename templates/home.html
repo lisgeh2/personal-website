@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block main %}
+{% block hero %}
 <section id="hero" class="hero">
   <div class="container hero-inner">
     <p class="hero-kicker">Hello, I'm</p>
@@ -10,10 +10,13 @@
   </div>
   <a class="hero-scroll" href="#about" aria-label="Scroll to content">↓</a>
 </section>
+{% endblock %}
 
+{% block main %}
 <div class="container content">
   <section id="about" class="about">
-    <h2>About</h2>
+    <p class="kicker">// about</p>
+    <h2>Hi there</h2>
     <p class="lead">{{ site.about }}</p>
   </section>
 
@@ -27,6 +30,7 @@
 
   {% if recent_posts %}
   <section>
+    <p class="kicker">// latest</p>
     <h2>Recent writing</h2>
     <ul class="post-list">
       {% for post in recent_posts %}{{ ui.post_item(post) }}{% endfor %}
@@ -34,11 +38,4 @@
   </section>
   {% endif %}
 </div>
-{% endblock %}
-
-{% block scripts %}
-{# Vanta.js NET background — the only JavaScript on the site. #}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.net.min.js" defer></script>
-<script src="{{ url('/static/js/background.js') }}" defer></script>
 {% endblock %}
