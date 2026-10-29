@@ -12,10 +12,11 @@
   --text: #ededed;
   --muted: #8a8a8a;
   --faint: #5a5a5a;
+  --accent: #7ea6d1;     /* the one colour: calm blue for the network and hover states */
   --line: #222;
 
   --hero-bg: #0a0a0a;     /* Vanta background colour */
-  --hero-accent: #9a9a9a; /* Vanta net line colour */
+  --hero-accent: #7ea6d1; /* Vanta net line colour (same as --accent) */
 
   --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
@@ -49,10 +50,10 @@ h2 { font-size: 0.8rem; font-weight: 400; color: var(--muted); letter-spacing: 0
 p { margin: 0; }
 p + p { margin-top: 0.9em; }
 
-a { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
-a:hover { text-decoration-color: currentColor; }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; transition: color 0.2s, text-decoration-color 0.2s; }
+a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
-:focus-visible { outline: 1px solid var(--text); outline-offset: 3px; }
+:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
 
 code, pre { font-family: var(--mono); font-size: 0.85em; }
 pre { border: 1px solid var(--line); padding: 1rem; overflow-x: auto; }
@@ -80,7 +81,8 @@ pre { border: 1px solid var(--line); padding: 1rem; overflow-x: auto; }
 .nav-brand { font-weight: 500; text-decoration: none; }
 .nav-links { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
 .nav-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
+.nav-links a[aria-current="page"] { color: var(--text); }
+.nav-links a:hover, .nav-brand:hover { color: var(--accent); }
 
 /* Mobile menu: pure CSS checkbox toggle, no JavaScript needed. */
 .nav-toggle, .nav-burger { display: none; }
@@ -105,7 +107,7 @@ pre { border: 1px solid var(--line); padding: 1rem; overflow-x: auto; }
 
 .social { display: flex; gap: 1.5rem; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
 .social a { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-.social a:hover { color: var(--text); }
+.social a:hover { color: var(--accent); }
 
 /* 4. Home hero (the one animated element on the site) ---------------------- */
 .hero {
@@ -137,7 +139,7 @@ pre { border: 1px solid var(--line); padding: 1rem; overflow-x: auto; }
 .row:last-child { border-bottom: 1px solid var(--line); }
 .row-meta { font-size: 0.8rem; color: var(--muted); padding-top: 0.1rem; font-variant-numeric: tabular-nums; }
 .row-title { font-weight: 500; text-decoration: none; }
-a.row-title:hover { text-decoration: underline; text-decoration-color: var(--faint); }
+a.row-title:hover { color: var(--accent); }
 .row p { margin-top: 0.25rem; }
 .row ul { margin: 0.5rem 0 0; padding-left: 1rem; color: var(--muted); }
 .row li + li { margin-top: 0.2rem; }
