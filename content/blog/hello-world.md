@@ -3,7 +3,6 @@ title: Hello, world
 date: 2026-10-29
 kind: thought
 summary: Why I started this site, and what I plan to write about.
-tags: [meta]
 ---
 
 Welcome to my blog! This is where I'll write down **interesting thoughts**

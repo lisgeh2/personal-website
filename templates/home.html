@@ -6,38 +6,26 @@
     <p class="hero-kicker">Hello, I'm</p>
     <h1 class="hero-title">{{ site.name }}</h1>
     <p class="hero-tagline">{{ site.tagline }}</p>
-    {{ ui.social_links(site.links, email=site.get("email"), large=True) }}
+    {{ ui.social_links(site.links, email=site.get("email"), labels=True) }}
   </div>
-  <a class="hero-scroll" href="#about" aria-label="Scroll to content">↓</a>
 </section>
 {% endblock %}
 
-{% block main %}
-<div class="container content">
-  <section id="about" class="about">
-    <p class="kicker">// about</p>
-    <h2>Hi there</h2>
-    <p class="lead">{{ site.about }}</p>
-  </section>
+{% block content %}
+<section class="narrow">
+  <h2>About</h2>
+  <p>{{ site.about }}</p>
+</section>
 
-  <section class="cards" aria-label="Explore">
-    {% for item in site.nav if item.page != "home" %}
-    <a class="card card-link" href="{{ url(item.path) }}">
-      <h3>{{ item.label }} {{ ui.icon("arrow") }}</h3>
-    </a>
-    {% endfor %}
-  </section>
-
-  {% if recent_posts %}
-  <section>
-    <p class="kicker">// latest</p>
-    <h2>Recent writing</h2>
-    <ul class="post-list">
-      {% for post in recent_posts %}{{ ui.post_item(post) }}{% endfor %}
-    </ul>
-  </section>
-  {% endif %}
-</div>
+{% if recent_posts %}
+<section class="narrow">
+  <h2>Recent writing</h2>
+  <ul class="rows">
+    {% for post in recent_posts %}{{ ui.post_item(post) }}{% endfor %}
+  </ul>
+  <p class="more"><a href="{{ url('/blog/') }}">All posts →</a></p>
+</section>
+{% endif %}
 {% endblock %}
 
 {% block scripts %}

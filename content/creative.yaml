@@ -5,25 +5,21 @@ projects:
   - title: Ceramic Doves
     description: I play keys in the band Ceramic Doves, with regular gigs. I also built the band's website.
     url: https://lisgeh2.github.io/ceramicdoves/
-    tags: [music, keyboard]
 
   - title: Studierendentheater Zürich
     description: >
       I'm president of the student theatre StuThe: I lead the board, help organise
       productions, and act on stage.
     url: https://lisgeh2.github.io/stuthe-website/
-    tags: [theatre, acting]
 
   - title: Studi-Impro
     description: >
       A non-profit improv group I founded in 2025 and lead. I also programmed its website.
     url: https://www.studi-impro.ch
     year: 2025
-    tags: [improv, community]
 
   - title: SchwamenAir
     description: >
       A non-profit local music festival. I organised the 2026 edition and handled tech, artist
       communication and promotion.
     year: 2026
-    tags: [festival, organising]

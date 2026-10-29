@@ -32,7 +32,7 @@ build.py              # the generator: loads content, renders templates, writes 
 content/              # ← everything you edit lives here
   site.yaml           #   name, tagline, LinkedIn/GitHub links, navigation
   cv.yaml             #   CV sections and skills
-  coding.yaml         #   coding projects (title, description, url, tags)
+  coding.yaml         #   coding projects (title, description, url, year)
   creative.yaml       #   creative projects
   blog/               #   one Markdown file per post
     _TEMPLATE.md      #   copy this to start a new post

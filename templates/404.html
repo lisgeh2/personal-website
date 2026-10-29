@@ -2,7 +2,7 @@
 {% block title %}Not found · {{ site.title }}{% endblock %}
 
 {% block hero %}
-{% call ui.page_hero("// error 404", "Lost in the network", "This page wandered off.") %}
-<a class="button" href="{{ url('/') }}">Go home</a>
+{% call ui.page_header("Page not found", narrow=True) %}
+<p class="meta"><a href="{{ url('/') }}">← Home</a></p>
 {% endcall %}
 {% endblock %}

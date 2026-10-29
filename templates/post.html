@@ -3,25 +3,18 @@
 {% block description %}{{ post.summary or site.description }}{% endblock %}
 
 {% block hero %}
-{% call ui.page_hero("// " ~ ("paper note" if post.kind == "paper" else "thought"), post.title, post.summary, narrow=True) %}
-<p class="hero-meta">
+{% call ui.page_header(post.title, post.summary, narrow=True) %}
+<p class="meta">
   <time datetime="{{ post.date }}">{{ post.date|date }}</time>
   {% if post.authors %} · {{ post.authors }}{% endif %}
   {% if post.venue %} · {{ post.venue }}{% endif %}
+  {% if post.paper_url %} · <a href="{{ post.paper_url }}" target="_blank" rel="noopener">Paper {{ ui.icon("arrow") }}</a>{% endif %}
+  {% if post.pdf %} · <a href="{{ url(post.pdf) }}" download>PDF</a>{% endif %}
 </p>
-{% if post.paper_url or post.pdf %}
-<div class="actions">
-  {% if post.paper_url %}<a class="button" href="{{ post.paper_url }}" target="_blank" rel="noopener">Read the paper {{ ui.icon("arrow") }}</a>{% endif %}
-  {% if post.pdf %}<a class="button button-ghost" href="{{ url(post.pdf) }}" download>Download PDF</a>{% endif %}
-</div>
-{% endif %}
 {% endcall %}
 {% endblock %}
 
 {% block content %}
-<article class="post card prose">
-  {{ ui.tags(post.tags) }}
-  {{ post.html|safe }}
-</article>
-<p class="back"><a href="{{ url('/blog/') }}">← All posts</a></p>
+<article class="prose narrow">{{ post.html|safe }}</article>
+<p class="more narrow"><a href="{{ url('/blog/') }}">← All posts</a></p>
 {% endblock %}

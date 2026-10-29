@@ -5,7 +5,7 @@ title: My new post
 date: 2026-01-01
 kind: thought            # "thought" or "paper"
 summary: One line shown in the blog list.
-tags: [idea]
+# pdf: static/files/my-post.pdf   # optional download link
 # For papers you can also set:
 # authors: A. Author, B. Author
 # venue: Journal / Conference, Year

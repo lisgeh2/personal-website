@@ -2,27 +2,24 @@
 {% block title %}CV · {{ site.title }}{% endblock %}
 
 {% block hero %}
-{% call ui.page_hero("// curriculum vitae", site.name, cv.headline) %}
-<div class="actions">
-  {% if cv.pdf %}<a class="button" href="{{ url(cv.pdf) }}" download>Download PDF</a>{% endif %}
-  <button class="button button-ghost" type="button" onclick="window.print()">Print</button>
-</div>
+{% call ui.page_header("CV", cv.headline, narrow=True) %}
+{% if cv.pdf %}<p class="meta"><a href="{{ url(cv.pdf) }}" download>Download PDF</a></p>{% endif %}
 {% endcall %}
 {% endblock %}
 
 {% block content %}
-{% if cv.summary %}<p class="lead cv-summary">{{ cv.summary }}</p>{% endif %}
+{% if cv.summary %}<p class="narrow">{{ cv.summary }}</p>{% endif %}
 
 {% for section in cv.sections %}
-<section class="cv-section">
-  <p class="kicker">// {{ section.title|lower }}</p>
+<section class="narrow">
   <h2>{{ section.title }}</h2>
-  <ol class="timeline">
+  <ol class="rows">
     {% for e in section.entries %}
-    <li class="timeline-item">
-      <span class="timeline-when">{{ e.when }}</span>
-      <div class="card">
-        <h3>{% if e.link %}<a href="{{ e.link }}" target="_blank" rel="noopener">{{ e.what }} {{ ui.icon("arrow") }}</a>{% else %}{{ e.what }}{% endif %}</h3>
+    <li class="row">
+      <span class="row-meta">{{ e.when }}</span>
+      <div>
+        {% if e.link %}<a class="row-title" href="{{ e.link }}" target="_blank" rel="noopener">{{ e.what }} {{ ui.icon("arrow") }}</a>
+        {% else %}<span class="row-title">{{ e.what }}</span>{% endif %}
         {% if e.where %}<p class="muted">{{ e.where }}</p>{% endif %}
         {% if e.text %}<p>{{ e.text }}</p>{% endif %}
         {% if e.details %}<ul>{% for d in e.details %}<li>{{ d }}</li>{% endfor %}</ul>{% endif %}
@@ -34,14 +31,13 @@
 {% endfor %}
 
 {% if cv.skills %}
-<section class="cv-section">
-  <p class="kicker">// skills</p>
-  <h2>Skills &amp; Languages</h2>
-  <dl class="skills card">
+<section class="narrow">
+  <h2>Skills</h2>
+  <ul class="rows">
     {% for s in cv.skills %}
-    <dt>{{ s.group }}</dt><dd>{{ ui.tags(s["items"]) }}</dd>
+    <li class="row"><span class="row-meta">{{ s.group }}</span><p>{{ s["items"]|join(", ") }}</p></li>
     {% endfor %}
-  </dl>
+  </ul>
 </section>
 {% endif %}
 {% endblock %}

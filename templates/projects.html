@@ -1,21 +1,18 @@
 {% extends "base.html" %}
 {% block title %}{{ heading }} · {{ site.title }}{% endblock %}
 
-{% block hero %}
-{{ ui.page_hero("// " ~ page ~ " projects", heading, intro) }}
-{% endblock %}
+{% block hero %}{{ ui.page_header(heading, intro, narrow=True) }}{% endblock %}
 
 {% block content %}
-<ul class="project-grid">
+<ul class="rows rows-plain narrow">
   {% for p in projects %}
-  <li class="card project">
-    {% if p.year %}<p class="kicker">{{ p.year }}</p>{% endif %}
-    <h2>
-      {% if p.url %}<a class="stretched" href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }} {{ ui.icon("arrow") }}</a>
-      {% else %}{{ p.title }}{% endif %}
-    </h2>
-    <p>{{ p.description }}</p>
-    {{ ui.tags(p.tags) }}
+  <li class="row">
+    <div>
+      {% if p.url %}<a class="row-title" href="{{ p.url }}" target="_blank" rel="noopener">{{ p.title }} {{ ui.icon("arrow") }}</a>
+      {% else %}<span class="row-title">{{ p.title }}</span>{% endif %}
+      {% if p.year %}<span class="row-meta">&ensp;{{ p.year }}</span>{% endif %}
+      <p class="muted">{{ p.description }}</p>
+    </div>
   </li>
   {% endfor %}
 </ul>

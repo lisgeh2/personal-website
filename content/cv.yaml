@@ -115,6 +115,6 @@ sections:
         text: Swiss champion U21A 2019; played at the U19 World Championship in Uppsala.
 
 skills:
-  - { group: Programming, items: [Python, pandas, Streamlit, Flask, Plotly, pytest, R, ggplot2, SPSS, Java, JavaScript, HTML/CSS, C (basics)] }
+  - { group: Programming, items: ["Python (pandas, Streamlit, Flask, Plotly, pytest)", R (ggplot2), SPSS, Java, JavaScript, HTML/CSS, C (basics)] }
   - { group: Tools,       items: [Git, GitHub Actions, Website hosting, "APIs (Notion, Anthropic)"] }
   - { group: Languages,   items: [German (native), English (fluent), French (basic)] }

@@ -3,7 +3,6 @@ title: The Hidden Cost of Trying Harder
 date: 2026-10-11
 kind: thought
 summary: "Internal control appraisals under external adversity: resilience or masked strain?"
-tags: [coping, emotion regulation, stress, study idea]
 pdf: static/files/the-hidden-cost-of-trying-harder.pdf
 ---
 

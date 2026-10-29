@@ -18,7 +18,7 @@ import datetime as dt
 import functools
 import http.server
 import shutil
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 import markdown
@@ -47,7 +47,6 @@ class Post:
     date: dt.date
     kind: str = "thought"  # "thought" or "paper"
     summary: str = ""
-    tags: list[str] = field(default_factory=list)
     html: str = ""
     # Paper-specific metadata (optional).
     authors: str = ""

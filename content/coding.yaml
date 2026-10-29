@@ -1,7 +1,7 @@
 heading: Coding Projects
 intro: Things I've built. Each has a short explanation and a link to try it or read the code.
 
-# Each project: title, description (required); url, year, tags (optional).
+# Each project: title, description (required); url, year (optional).
 projects:
   - title: Questionnaire Template
     description: >
@@ -9,35 +9,29 @@ projects:
       defined declaratively, with validation, scoring, a personalised results page and an
       analysis dashboard built in.
     url: https://github.com/lisgeh2/questionnaire_template
-    tags: [Python, Streamlit, pytest]
 
   - title: How Neurospicy Are You?
     description: >
       A questionnaire built on the template: 36 Likert items on ADHD and autism traits, with
       reverse coding, scale scores, z-scores and percentiles.
     url: https://github.com/lisgeh2/how-neurospicy-are-you
-    tags: [Python, psychometrics]
 
   - title: Lend-a-Hand
     description: >
       Web platform connecting people who need help with volunteers, built in a team of four
       for the UZH Software Praktikum.
     year: 2026
-    tags: [Java, Spring Boot, Next.js, TypeScript, Google Cloud]
 
   - title: Computational Modeling
     description: Models of cognition and behaviour, implemented and fitted in Python.
     url: https://github.com/lisgeh2/computational_modeling
-    tags: [Python, modeling]
 
   - title: SBB Display
     description: A live departure board for Swiss trains, styled after the real station displays.
     url: https://github.com/lisgeh2/SBB-display
-    tags: [API, display]
 
   - title: This Website
     description: >
       A small static-site generator in Python and Jinja2 with an animated Vanta.js background,
       deployed to GitHub Pages.
     url: https://github.com/lisgeh2/personal-website
-    tags: [Python, Jinja2, CSS]

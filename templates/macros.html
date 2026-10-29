@@ -14,42 +14,35 @@
 {% endif %}
 {% endmacro %}
 
-{% macro social_links(links, email=None, large=False) %}
-<ul class="social{% if large %} social-large{% endif %}">
+{% macro social_links(links, email=None, labels=False) %}
+<ul class="social">
   {% for name, href in links.items() %}
-  <li><a href="{{ href }}" target="_blank" rel="noopener" aria-label="{{ LABELS.get(name, name|title) }}">{{ icon(name) }}{% if large %}<span>{{ LABELS.get(name, name|title) }}</span>{% endif %}</a></li>
+  <li><a href="{{ href }}" target="_blank" rel="noopener" aria-label="{{ LABELS.get(name, name|title) }}">{{ icon(name) }}{% if labels %}<span>{{ LABELS.get(name, name|title) }}</span>{% endif %}</a></li>
   {% endfor %}
   {% if email %}
-  <li><a href="mailto:{{ email }}" aria-label="Email">{{ icon("mail") }}{% if large %}<span>Email</span>{% endif %}</a></li>
+  <li><a href="mailto:{{ email }}" aria-label="Email">{{ icon("mail") }}{% if labels %}<span>Email</span>{% endif %}</a></li>
   {% endif %}
 </ul>
 {% endmacro %}
 
-{% macro tags(items) %}
-{% if items %}<ul class="tags">{% for t in items %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
-{% endmacro %}
-
 {% macro post_item(post) %}
-<li class="post-item">
-  <time datetime="{{ post.date }}">{{ post.date|date("%b %-d, %Y") }}</time>
+<li class="row">
+  <time class="row-meta" datetime="{{ post.date }}">{{ post.date|date("%b %Y") }}</time>
   <div>
-    <a class="post-title" href="{{ url('/blog/' ~ post.slug ~ '/') if post.has_page else post.paper_url }}"
+    <a class="row-title" href="{{ url('/blog/' ~ post.slug ~ '/') if post.has_page else post.paper_url }}"
        {% if not post.has_page %}target="_blank" rel="noopener"{% endif %}>
       {{ post.title }}{% if not post.has_page %} {{ icon("arrow") }}{% endif %}
     </a>
-    {% if post.authors %}<p class="post-meta">{{ post.authors }}{% if post.venue %} · {{ post.venue }}{% endif %}</p>{% endif %}
-    {% if post.summary %}<p class="post-summary">{{ post.summary }}</p>{% endif %}
+    {% if post.authors %}<p class="muted">{{ post.authors }}{% if post.venue %}, {{ post.venue }}{% endif %}</p>{% endif %}
+    {% if post.summary %}<p class="muted">{{ post.summary }}</p>{% endif %}
   </div>
 </li>
 {% endmacro %}
 
-{% macro page_hero(kicker, title, lead="", narrow=False) %}
-<section id="hero" class="hero hero-compact{% if narrow %} hero-narrow{% endif %}">
-  <div class="container hero-inner">
-    <p class="hero-kicker">{{ kicker }}</p>
-    <h1 class="hero-title">{{ title }}</h1>
-    {% if lead %}<p class="hero-tagline">{{ lead }}</p>{% endif %}
-    {{ caller() if caller is defined }}
-  </div>
-</section>
+{% macro page_header(title, lead="", narrow=False) %}
+<header class="container page-header{% if narrow %} narrow{% endif %}">
+  <h1>{{ title }}</h1>
+  {% if lead %}<p class="muted">{{ lead }}</p>{% endif %}
+  {{ caller() if caller is defined }}
+</header>
 {% endmacro %}

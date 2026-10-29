@@ -6,7 +6,6 @@ summary: The transformer paper — what it claims and why it mattered.
 authors: Vaswani et al.
 venue: NeurIPS 2017
 paper_url: https://arxiv.org/abs/1706.03762
-tags: [machine learning]
 ---
 
 ## The core idea

@@ -1,34 +1,27 @@
 /* ==========================================================================
-   Personal website styles
-   One dark "network" theme shared by every page:
-   1. Theme tokens   2. Base   3. Layout & nav   4. Hero banner
-   5. Components     6. Pages  7. Print
+   Personal website styles — quiet, monochrome, lots of space.
+   1. Theme tokens   2. Base   3. Layout & nav   4. Home hero
+   5. Page header & rows   6. Prose   7. Print
    ========================================================================== */
 
 /* 1. Theme tokens ---------------------------------------------------------- */
 :root {
   color-scheme: dark;
 
-  --bg: #0b0d17;
-  --surface: rgba(20, 24, 41, 0.6);
-  --surface-solid: #141829;
-  --surface-hover: rgba(30, 36, 62, 0.75);
-  --border: #262c47;
-  --border-strong: #2f3760;
-  --text: #e7e9f3;
-  --muted: #9aa0bd;
-  --accent: #7cc4ff;
-  --accent-2: #c49bff;
-  --glow: 0 0 0 1px rgba(124, 196, 255, 0.35), 0 8px 30px rgba(124, 196, 255, 0.12);
+  --bg: #0a0a0a;
+  --text: #ededed;
+  --muted: #8a8a8a;
+  --faint: #5a5a5a;
+  --line: #222;
 
-  --hero-bg: #0b0d17;     /* Vanta background colour */
-  --hero-accent: #7cc4ff; /* Vanta net line colour */
+  --hero-bg: #0a0a0a;     /* Vanta background colour */
+  --hero-accent: #9a9a9a; /* Vanta net line colour */
 
   --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, monospace;
-  --radius: 14px;
-  --width: 64rem;
-  --space: clamp(1rem, 3vw, 2rem);
+  --width: 60rem;
+  --narrow: 40rem;
+  --space: clamp(1.25rem, 4vw, 2.5rem);
 }
 
 /* 2. Base ------------------------------------------------------------------ */
@@ -41,56 +34,53 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* A faint glow behind the content echoes the hero banner. */
-  background:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(29, 37, 80, 0.55), transparent 70%),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
-  font: 400 1.0625rem/1.7 var(--font);
+  font: 400 0.9375rem/1.7 var(--font);
   -webkit-font-smoothing: antialiased;
 }
 
 main { flex: 1; }
 
-h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 0.5em; }
-h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
-h2 { font-size: 1.6rem; margin-top: 0; }
-h3 { font-size: 1.1rem; }
+h1, h2, h3 { font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; margin: 0; }
+h1 { font-size: 1.5rem; }
+h2 { font-size: 0.8rem; font-weight: 400; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.25rem; }
 
-a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-a:hover { color: var(--accent-2); }
+p { margin: 0; }
+p + p { margin-top: 0.9em; }
 
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--faint); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+a:hover { text-decoration-color: currentColor; }
 
-code, pre { font-family: var(--mono); font-size: 0.9em; }
-pre { background: var(--surface-solid); border: 1px solid var(--border); padding: 1rem; border-radius: var(--radius); overflow-x: auto; }
+:focus-visible { outline: 1px solid var(--text); outline-offset: 3px; }
+
+code, pre { font-family: var(--mono); font-size: 0.85em; }
+pre { border: 1px solid var(--line); padding: 1rem; overflow-x: auto; }
 
 .muted { color: var(--muted); }
-.lead { font-size: 1.2rem; color: var(--muted); max-width: 42rem; }
-.kicker { font: 0.9rem var(--mono); color: var(--accent); margin: 0 0 0.25rem; }
+.meta { font-size: 0.8rem; color: var(--muted); margin-top: 1rem; }
+.more { margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted); }
 
-.icon { width: 1.1em; height: 1.1em; vertical-align: -0.15em; flex-shrink: 0; }
-.icon-arrow { width: 0.85em; height: 0.85em; opacity: 0.7; }
+.icon { width: 1em; height: 1em; vertical-align: -0.12em; flex-shrink: 0; }
+.icon-arrow { width: 0.7em; height: 0.7em; vertical-align: 0; opacity: 0.6; }
 
 .skip-link { position: absolute; left: -999px; }
-.skip-link:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--surface-solid); padding: 0.5rem 1rem; }
+.skip-link:focus { left: 1rem; top: 1rem; z-index: 100; background: var(--bg); padding: 0.5rem 1rem; }
 
 /* 3. Layout & navigation --------------------------------------------------- */
 .container { width: min(100% - 2 * var(--space), var(--width)); margin-inline: auto; }
-.content { padding-block: 3rem 5rem; }
-.content > section + section { margin-top: 3.5rem; }
+.narrow { max-width: var(--narrow); margin-inline: auto; }
+.content { padding-block: 3rem 7rem; }
+.content > * + * { margin-top: 5rem; }
+.content > p.narrow + section { margin-top: 4rem; }
 
-/* The header floats over the hero banner on every page. */
 .site-header { position: absolute; inset: 0 0 auto; z-index: 10; }
 
-.nav { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
-.nav-brand { font-weight: 700; color: var(--text); text-decoration: none; }
-.nav-links { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
-.nav-links a {
-  display: block; padding: 0.4rem 0.8rem; border-radius: 999px;
-  color: var(--muted); text-decoration: none; font-size: 0.95rem;
-}
-.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); background: rgba(255, 255, 255, 0.08); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 4.5rem; font-size: 0.85rem; }
+.nav-brand { font-weight: 500; text-decoration: none; }
+.nav-links { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
+.nav-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
 
 /* Mobile menu: pure CSS checkbox toggle, no JavaScript needed. */
 .nav-toggle, .nav-burger { display: none; }
@@ -98,188 +88,92 @@ pre { background: var(--surface-solid); border: 1px solid var(--border); padding
 @media (max-width: 40rem) {
   .nav-burger { display: block; cursor: pointer; padding: 1rem 0.25rem; }
   .nav-burger span, .nav-burger span::before, .nav-burger span::after {
-    display: block; width: 22px; height: 2px; background: var(--text); position: relative; content: "";
+    display: block; width: 18px; height: 1px; background: var(--text); position: relative; content: "";
   }
-  .nav-burger span::before { position: absolute; top: -7px; }
-  .nav-burger span::after { position: absolute; top: 7px; }
+  .nav-burger span::before { position: absolute; top: -6px; }
+  .nav-burger span::after { position: absolute; top: 6px; }
   .nav-links {
-    display: none; position: absolute; top: 4rem; left: 0; right: 0;
-    flex-direction: column; padding: 0.5rem var(--space) 1rem;
-    background: var(--bg); border-bottom: 1px solid var(--border);
+    display: none; position: absolute; top: 4.5rem; left: 0; right: 0;
+    flex-direction: column; gap: 0.9rem; padding: 0.5rem var(--space) 1.5rem;
+    background: var(--bg); border-bottom: 1px solid var(--line);
   }
   .nav-toggle:checked ~ .nav-links { display: flex; }
 }
 
-.site-footer { border-top: 1px solid var(--border); padding-block: 1.5rem; color: var(--muted); font-size: 0.9rem; }
+.site-footer { padding-block: 2rem; color: var(--faint); font-size: 0.75rem; }
 .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
 
-/* 4. Hero banner (full-height on home, compact on other pages) -------------- */
-.hero {
-  position: relative; min-height: 100vh; display: grid; place-items: center;
-  background: radial-gradient(ellipse at 30% 20%, #1d2550 0%, var(--hero-bg) 60%);
-  overflow: hidden;
-}
-.hero.has-vanta { background: var(--hero-bg); }
-/* Fade the animated banner into the page below. */
-.hero::after {
-  content: ""; position: absolute; inset: auto 0 0; height: 30%; z-index: 0; pointer-events: none;
-  background: linear-gradient(transparent, var(--bg));
-}
-.hero-inner { position: relative; z-index: 1; text-align: center; padding-block: 6rem; }
-.hero-inner > * + .social, .hero-inner > .actions, .hero-inner > .button, .hero-inner > .pill-links { margin-top: 2rem; }
-.hero-inner .social, .hero-inner .actions, .hero-inner .pill-links { justify-content: center; }
-.hero-kicker { font-family: var(--mono); color: var(--accent); margin: 0; }
-.hero-title { font-size: clamp(3rem, 10vw, 6rem); margin: 0.1em 0; }
-.hero-tagline { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: #b6bbd6; margin: 0 auto; max-width: 38rem; }
-.hero-meta { font: 0.9rem var(--mono); color: var(--muted); margin: 1rem 0 0; }
-
-/* Inner pages: a small, left-aligned title that sits quietly above the content. */
-.hero-compact { min-height: 0; display: block; background: none; }
-.hero-narrow .hero-inner { max-width: 46rem; }
-.hero-compact::after { display: none; }
-.hero-compact .hero-inner { text-align: left; padding-block: 6.5rem 0.5rem; }
-.hero-compact .hero-kicker { font-size: 0.85rem; }
-.hero-compact .hero-title { font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 0.15em 0 0.25em; }
-.hero-compact .hero-tagline { font-size: 1.05rem; color: var(--muted); margin: 0; }
-.hero-compact .hero-inner > .actions, .hero-compact .hero-inner > .button,
-.hero-compact .hero-inner > .pill-links { margin-top: 1.25rem; justify-content: flex-start; }
-.hero-compact .pill-links a, .hero-compact .button { padding: 0.35rem 0.9rem; font-size: 0.85rem; }
-.hero-compact .hero-meta { margin-top: 0.5rem; }
-
-.hero-scroll {
-  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 1;
-  color: #b6bbd6; text-decoration: none; font-size: 1.5rem; animation: bob 2s ease-in-out infinite;
-}
-@keyframes bob { 50% { transform: translate(-50%, 6px); } }
-@media (prefers-reduced-motion: reduce) { .hero-scroll { animation: none; } html { scroll-behavior: auto; } }
-
-/* 5. Components ------------------------------------------------------------ */
-/* Glassy pill used for social links, buttons and in-page links. */
-.social { display: flex; gap: 0.75rem; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
-.social a { color: var(--muted); display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.social { display: flex; gap: 1.5rem; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
+.social a { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .social a:hover { color: var(--text); }
 
-.social-large a, .pill-links a, .button {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.6rem 1.1rem; border: 1px solid var(--border-strong); border-radius: 999px;
-  background: var(--surface); color: var(--text); font: 500 0.95rem var(--font);
-  text-decoration: none; cursor: pointer; backdrop-filter: blur(4px);
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+/* 4. Home hero (the one animated element on the site) ---------------------- */
+.hero {
+  position: relative; min-height: 100vh; display: grid; place-items: center;
+  background: var(--hero-bg); overflow: hidden;
 }
-.social-large a:hover, .pill-links a:hover, .button:hover {
-  color: var(--text); border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--glow);
+.hero::after {
+  content: ""; position: absolute; inset: auto 0 0; height: 25%; pointer-events: none;
+  background: linear-gradient(transparent, var(--bg));
 }
-.button { border-color: var(--accent); color: var(--accent); }
-.button-ghost { border-color: var(--border-strong); color: var(--text); }
-.pill-links, .actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.hero-inner { position: relative; z-index: 1; text-align: center; }
+.hero-kicker { font: 0.8rem var(--mono); color: var(--muted); }
+.hero-title { font-size: clamp(2.6rem, 8vw, 4.5rem); font-weight: 600; letter-spacing: -0.03em; margin: 0.2em 0 0.35em; }
+.hero-tagline { color: var(--muted); max-width: 30rem; margin-inline: auto; }
+.hero .social { justify-content: center; margin-top: 2.5rem; font-size: 0.85rem; }
 
-.card {
-  position: relative; background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 1.4rem; backdrop-filter: blur(4px);
-  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+/* 5. Page header & rows ---------------------------------------------------- */
+.page-header { padding-top: 9rem; }
+.page-header > .muted { margin-top: 0.6rem; }
+
+/* A "row" is one entry in a list: small meta on the left, content on the right.
+   Used for blog posts, CV entries, skills and projects. */
+.rows { list-style: none; padding: 0; margin-block: 0; }
+.rows-plain .row { grid-template-columns: 1fr; }
+.row {
+  display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.5rem;
+  padding-block: 1.1rem; border-top: 1px solid var(--line);
 }
-a.card:hover, .card:has(.stretched):hover {
-  border-color: var(--accent); background: var(--surface-hover); transform: translateY(-3px); box-shadow: var(--glow);
-}
-.card-link { color: var(--text); text-decoration: none; }
-.card-link h3 { margin: 0; }
-/* Makes the whole card clickable while keeping a single, accessible link. */
-.stretched { color: var(--text); text-decoration: none; }
-.stretched::after { content: ""; position: absolute; inset: 0; }
+.row:last-child { border-bottom: 1px solid var(--line); }
+.row-meta { font-size: 0.8rem; color: var(--muted); padding-top: 0.1rem; font-variant-numeric: tabular-nums; }
+.row-title { font-weight: 500; text-decoration: none; }
+a.row-title:hover { text-decoration: underline; text-decoration-color: var(--faint); }
+.row p { margin-top: 0.25rem; }
+.row ul { margin: 0.5rem 0 0; padding-left: 1rem; color: var(--muted); }
+.row li + li { margin-top: 0.2rem; }
 
-.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0.75rem 0 0; }
-.tags li {
-  font: 0.75rem var(--mono); padding: 0.15rem 0.55rem; border-radius: 999px;
-  background: rgba(124, 196, 255, 0.1); color: var(--accent); border: 1px solid rgba(124, 196, 255, 0.2);
+@media (max-width: 40rem) {
+  .row { grid-template-columns: 1fr; gap: 0.2rem; }
 }
 
-/* 6. Pages ----------------------------------------------------------------- */
-
-/* Home */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1rem; margin-top: 2rem; }
-
-/* Blog */
-.post-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
-.post-item {
-  display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; position: relative;
-  padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: var(--radius);
-  background: var(--surface); transition: border-color 0.2s, box-shadow 0.2s;
-}
-.post-item:hover { border-color: var(--accent); box-shadow: var(--glow); }
-.post-item time { font: 0.85rem/2 var(--mono); color: var(--muted); }
-.post-title { font-weight: 500; font-size: 1.1rem; color: var(--text); text-decoration: none; }
-.post-title::after { content: ""; position: absolute; inset: 0; }
-.post-meta, .post-summary { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.95rem; }
-@media (max-width: 40rem) { .post-item { grid-template-columns: 1fr; gap: 0; } }
-
-.prose { max-width: 46rem; margin-inline: auto; padding: clamp(1.25rem, 4vw, 2.5rem); }
-.prose > .tags { margin: 0 0 1.5rem; }
-.prose h2 { font-size: 1.35rem; margin-top: 2rem; }
-.prose h2:first-of-type { margin-top: 0; }
-.prose blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--muted); }
-.prose img { max-width: 100%; border-radius: var(--radius); }
-.prose h3 { font-size: 1.05rem; margin-top: 1.5rem; color: var(--accent); font-weight: 500; }
-.prose :is(ul, ol):not(.tags) > li + li { margin-top: 0.5rem; }
-.prose figure { margin: 2rem 0; }
-.prose figure img { display: block; width: 100%; background: #fff; padding: 0.5rem; }
-.prose figcaption { font: 0.8rem var(--mono); color: var(--muted); text-align: center; margin-top: 0.6rem; }
-.prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
-.prose th, .prose td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
-.prose th { font-weight: 500; color: var(--accent); }
+/* 6. Prose (blog posts) ---------------------------------------------------- */
+.prose { font-size: 1rem; line-height: 1.8; }
+.prose > * + * { margin-top: 1.1em; }
+.prose h2 { font-size: 1.05rem; font-weight: 500; color: var(--text); letter-spacing: 0; text-transform: none; margin: 2.75rem 0 0; }
+.prose h3 { font-size: 0.95rem; font-weight: 500; color: var(--muted); margin: 2rem 0 0; }
+.prose ul, .prose ol { padding-left: 1.1rem; }
+.prose li + li { margin-top: 0.6rem; }
+.prose strong { font-weight: 500; }
+.prose blockquote { margin: 0 0 2.5rem; padding-left: 1.25rem; border-left: 1px solid var(--muted); color: var(--muted); }
+.prose img { max-width: 100%; }
+.prose figure { margin: 2.5rem 0; }
+.prose figure img { display: block; width: 100%; }
+.prose figcaption { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.75rem; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 0.85rem; display: block; overflow-x: auto; }
+.prose th, .prose td { padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.prose th { font-weight: 500; }
 .prose td:first-child { color: var(--muted); }
-.references { font-size: 0.85rem; color: var(--muted); }
+.references { font-size: 0.8rem; line-height: 1.6; color: var(--muted); }
 .references ul { padding-left: 0; list-style: none; }
 .references li { padding-left: 1.5rem; text-indent: -1.5rem; overflow-wrap: anywhere; }
-.back { max-width: 46rem; margin: 2rem auto 0; }
-
-/* CV */
-.cv-summary { margin: 0 auto 3rem; text-align: center; }
-.timeline { list-style: none; padding: 0; margin: 0; position: relative; }
-/* A thin vertical "network line" connecting the entries. */
-.timeline::before {
-  content: ""; position: absolute; left: 9.5rem; top: 0.5rem; bottom: 0.5rem; width: 1px;
-  background: linear-gradient(var(--accent), transparent);
-  opacity: 0.4;
-}
-.timeline-item { display: grid; grid-template-columns: 9rem 1fr; gap: 2rem; padding-block: 0.5rem; position: relative; }
-.timeline-item::before {
-  content: ""; position: absolute; left: calc(9.5rem - 4px); top: 1.6rem;
-  width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent);
-}
-.timeline-item h3 { margin: 0; }
-.timeline-item h3 a { color: var(--text); text-decoration: none; }
-.timeline-item p { margin: 0.25rem 0 0; }
-.timeline-item ul { margin: 0.6rem 0 0; padding-left: 1.2rem; }
-.timeline-item li + li { margin-top: 0.25rem; }
-.timeline-when { font: 0.85rem/1.9 var(--mono); color: var(--muted); padding-top: 1.25rem; text-align: right; }
-.skills { display: grid; grid-template-columns: 9rem 1fr; gap: 0.75rem 1rem; align-items: center; margin: 0; }
-.skills dt { font-weight: 500; }
-.skills dd { margin: 0; }
-.skills .tags { margin: 0; }
-@media (max-width: 40rem) {
-  .timeline::before, .timeline-item::before { display: none; }
-  .timeline-item, .skills { grid-template-columns: 1fr; gap: 0.3rem; }
-  .timeline-when { text-align: left; padding-top: 0; }
-}
-
-/* Projects */
-.project-grid {
-  list-style: none; padding: 0; margin: 0;
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1.25rem;
-}
-.project h2 { font-size: 1.15rem; margin: 0 0 0.25rem; }
-.project p { margin: 0.4rem 0 0; }
+.references li + li { margin-top: 0.6rem; }
 
 /* 7. Print (mainly for the CV page) ---------------------------------------- */
 @media print {
-  :root { --bg: #fff; --surface: #fff; --text: #000; --muted: #444; --border: #ccc; --accent: #000; }
-  body { background: #fff; }
-  .site-header, .site-footer, .actions, .skip-link, .timeline::before, .timeline-item::before { display: none; }
-  .hero, .hero-compact { min-height: 0; background: none; }
-  .hero canvas, .hero::after { display: none; }
-  .hero-inner { padding: 0; }
-  .card { border: 0; padding: 0; backdrop-filter: none; }
-  .content { padding: 0; }
-  a { color: inherit; text-decoration: none; }
-  .timeline-item { break-inside: avoid; }
+  :root { --bg: #fff; --text: #000; --muted: #444; --line: #ccc; }
+  .site-header, .site-footer, .skip-link { display: none; }
+  .page-header { padding-top: 0; }
+  .content { padding: 1rem 0 0; }
+  a { text-decoration: none; }
+  .row { break-inside: avoid; }
 }
