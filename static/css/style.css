@@ -165,6 +165,8 @@ a.row-title:hover { color: var(--accent); }
 .prose th, .prose td { padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
 .prose th { font-weight: 500; }
 .prose td:first-child { color: var(--muted); }
+.poem { margin: 2.5rem 0; padding-left: 1.25rem; border-left: 1px solid var(--line); font-style: italic; line-height: 1.75; }
+.poem p + p { margin-top: 1.5em; }
 .references { font-size: 0.8rem; line-height: 1.6; color: var(--muted); }
 .references ul { padding-left: 0; list-style: none; }
 .references li { padding-left: 1.5rem; text-indent: -1.5rem; overflow-wrap: anywhere; }
