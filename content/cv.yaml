@@ -94,7 +94,7 @@ sections:
   - title: Volunteering
     entries:
       - what: President, Studierendentheater Zürich (StuThe)
-        link: https://lisgeh2.github.io/stuthe-website/
+        link: https://www.stuthe.ch/
         text: >
           Leading, organising and acting in the student theatre. Responsible for the board,
           chairing board meetings and the general assembly, and addressing and resolving
@@ -105,11 +105,13 @@ sections:
         text: Leading and organising the group, and programming its website.
       - what: Organiser, SchwamenAir 2026
         when: "2026"
+        link: https://schwamenair.ch/
         text: Non-profit local music festival. Responsible for tech, artist communication and promotion.
 
   - title: Hobbies
     entries:
       - what: Music
+        link: https://ceramicdoves.ch/
         text: Keyboardist in the band «Ceramic Doves», with regular gigs.
       - what: Competitive floorball (until 2022)
         text: Swiss champion U21A 2019; played at the U19 World Championship in Uppsala.

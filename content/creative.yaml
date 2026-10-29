@@ -1,16 +1,24 @@
 heading: Creative Projects
-intro: Music, theatre, improv and festivals, plus the websites I built for some of them.
+intro: Music, theatre, improv, festivals, writing and photography.
 
 projects:
   - title: Ceramic Doves
     description: I play keys in the band Ceramic Doves, with regular gigs. I also built the band's website.
-    url: https://lisgeh2.github.io/ceramicdoves/
+    url: https://ceramicdoves.ch/
+
+  - title: Creative Writing
+    description: A collection of my writing.
+    url: https://lisa-gehrig.ch/writing/
+
+  - title: Photography
+    description: A collection of my photography.
+    url: https://lisa-gehrig.ch/photography/
 
   - title: Studierendentheater Zürich
     description: >
       I'm president of the student theatre StuThe: I lead the board, help organise
       productions, and act on stage.
-    url: https://lisgeh2.github.io/stuthe-website/
+    url: https://www.stuthe.ch/
 
   - title: Studi-Impro
     description: >
@@ -22,4 +30,5 @@ projects:
     description: >
       A non-profit local music festival. I organised the 2026 edition and handled tech, artist
       communication and promotion.
+    url: https://schwamenair.ch/
     year: 2026
